@@ -5,89 +5,77 @@ import type {
   ProjectHeader,
 } from "@/lib/projects/types";
 
-// TODO: replace placeholder GEO copy with real project content before launch.
 export const header: ProjectHeader = {
   eyebrow: "Generative Engine Optimization",
-  title: "Making content the answer engines cite",
+  title: "Applying generative AI to Swiss banking",
   intro:
-    "GEO is the practice of structuring content and systems so they surface in AI search and answer engines — not just classic search. Here is how I approach it, with the tooling and results behind it.",
+    "I build and evaluate generative-AI systems for regulated financial services — using NLP and LLMs to improve client-documentation quality, KYC, identity matching, and fraud detection, with risk management and compliance built in from the start.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
-    title: "Audit answer-engine visibility",
+    title: "Frame the regulated banking use case",
     description:
-      "Measure how often a brand is retrieved and cited across LLM-backed search surfaces, and where coverage gaps sit.",
+      "Start from a concrete compliance problem — client-documentation quality, KYC, identity matching, or fraud detection — and pin down the risk and regulatory constraints it has to satisfy.",
   },
   {
-    title: "Structure content for citation",
+    title: "Build the NLP / LLM solution",
     description:
-      "Add schema markup, clear claims, and source-able facts so retrievers can extract and attribute passages reliably.",
+      "Apply text analytics and LLMs (Anthropic/Claude and OpenAI APIs) to assess and improve documentation, calling them against an explicit quality and compliance rubric.",
   },
   {
-    title: "Instrument and evaluate",
+    title: "Embed risk and compliance controls",
     description:
-      "Build eval harnesses that track citation rate, answer accuracy, and share-of-voice as engines and content evolve.",
+      "Bake risk-management and compliance checks into the workflow so generated and assessed content stays auditable and defensible, not just fluent.",
   },
   {
-    title: "Measure and iterate",
+    title: "Validate and communicate results",
     description:
-      "Close the loop with dashboards and regression checks so wins hold as models and ranking behavior shift.",
+      "Evaluate solutions to a research standard and communicate findings to stakeholders — from hackathon judges to peer-reviewed publication.",
   },
 ];
 
 export const snippets: CodeSnippet[] = [
   {
-    label: "schema-markup.json",
-    language: "json",
-    // TODO: replace with a real structured-data example.
-    code: `{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Generative Engine Optimization?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Structuring content so AI answer engines retrieve and cite it."
-      }
-    }
-  ]
-}`,
+    label: "note_qa.py",
+    language: "python",
+    code: `def assess_contact_note(note, llm, rubric):
+    """Quality-assure a client contact note against a compliance rubric."""
+    prompt = build_prompt(note=note, rubric=rubric)
+    review = llm.complete(prompt)  # Anthropic/Claude or OpenAI
+    return {
+        "completeness": review.completeness,
+        "compliance_flags": review.flags,
+        "suggested_edits": review.edits,
+    }`,
   },
   {
-    label: "citation_eval.py",
-    language: "python",
-    // TODO: replace with a real evaluation snippet.
-    code: `def citation_rate(queries, engine, target_domain):
-    """Share of answers that cite the target domain."""
-    hits = 0
-    for q in queries:
-        answer = engine.ask(q)
-        if any(target_domain in c.url for c in answer.citations):
-            hits += 1
-    return hits / len(queries)`,
+    label: "quality_rubric.txt",
+    language: "text",
+    code: `Assess this client contact note for a Swiss private bank.
+Check completeness, factual support, and regulatory compliance.
+Flag missing KYC details, unsupported claims, and risk indicators.
+Return JSON: {"completeness": 1-5, "flags": [...], "edits": [...]}.`,
   },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    title: "B2B SaaS knowledge base",
+    title: "RiskOn Hackathon 2025 — Julius Baer",
     problem:
-      "Strong organic traffic, but the product was almost never cited in AI-generated answers.",
+      "Client contact notes vary in quality, creating compliance and risk exposure for the bank: 'Quality Assurance for Client Contact Notes — how can AI help?'",
     approach:
-      "Restructured docs into question-led pages with schema markup and source-able claims, then tracked citation rate weekly.",
+      "Built an NLP/LLM solution that applies text analytics to automatically quality-assure client contact notes, surfacing gaps and compliance risks for review.",
     result:
-      "TODO: quantify outcome (e.g. citation rate from X% to Y% over N weeks).",
+      "Team Winner of the RiskOn Hackathon 2025, sponsored by Julius Baer (Bank), Switzerland.",
   },
   {
-    title: "Editorial content network",
+    title: "AI-driven risk management in Swiss banking",
     problem:
-      "High-authority articles were summarized by answer engines without attribution.",
+      "Swiss banks need stronger, AI-enabled approaches to client documentation, identity matching, and fraud detection across the KYC lifecycle.",
     approach:
-      "Added canonical claims, author/entity markup, and an eval suite to monitor share-of-voice across engines.",
+      "Researched and designed AI-enabled solutions for KYC, identity matching, and fraud detection, grounding them in real risk-management and compliance requirements.",
     result:
-      "TODO: quantify outcome (e.g. attributed answers up N×, measured over the eval set).",
+      "Published as 'Advancing Risk Management in Swiss Banking' with the University of Zürich, Department of Finance (2026).",
   },
 ];

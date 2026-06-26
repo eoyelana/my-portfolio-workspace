@@ -5,89 +5,79 @@ import type {
   ProjectHeader,
 } from "@/lib/projects/types";
 
-// TODO: replace placeholder data-pipelines copy with real project content before launch.
 export const header: ProjectHeader = {
   eyebrow: "Data Pipelines",
-  title: "Moving data reliably, at scale",
+  title: "Governed data pipelines for regulated industries",
   intro:
-    "Ingestion, transformation, and orchestration that teams can trust — built on Databricks, Apache Airflow, and SQL across GCP and Azure. Here is how I design and operate them.",
+    "End-to-end ETL/ELT across clinical research and enterprise IoT — built with SQL, Python, dbt, Spark, Airflow, and Databricks on Azure, GCP, and AWS, and wrapped in the data-quality controls, lineage, and audit-readiness that regulated work demands.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
-    title: "Model the contract",
+    title: "Model the data and its contracts",
     description:
-      "Define source schemas, freshness, and quality expectations up front so downstream consumers have a stable contract.",
+      "Design efficient data models and schemas, and translate business requirements into validated KPIs with explicit data-governance standards before any pipeline is built.",
   },
   {
-    title: "Build idempotent transforms",
+    title: "Build validated ETL/ELT",
     description:
-      "Author Spark/SQL transformations that are safe to re-run, with partitioning and incremental loads for cost control.",
+      "Engineer SQL and Python pipelines with dbt, Spark, and Databricks to ingest, clean, and standardise data from APIs, databases, and enterprise systems.",
   },
   {
-    title: "Orchestrate and backfill",
+    title: "Embed data-quality controls",
     description:
-      "Schedule DAGs in Airflow with retries, alerting, and clean backfill paths for late or corrected data.",
+      "Author Data Validation Plans and SOPs and build data-quality monitoring frameworks, embedding validation logic and controls across SQL-based workflows for audit-readiness.",
   },
   {
-    title: "Test and monitor",
+    title: "Govern, review, and report",
     description:
-      "Add data-quality checks and observability so breakages surface before they reach dashboards or models.",
+      "Run independent code reviews for traceable, compliant pipelines and surface data-quality metrics in governed dashboards (SQL, Power BI, DAX).",
   },
 ];
 
 export const snippets: CodeSnippet[] = [
   {
-    label: "ingest_dag.py",
+    label: "transform.py",
     language: "python",
-    // TODO: replace with a real Airflow DAG example.
-    code: `from airflow.decorators import dag, task
+    code: `from pyspark.sql import functions as F
 
 
-@dag(schedule="@hourly", catchup=False)
-def ingest_events():
-    @task
-    def extract():
-        return read_source("events")
-
-    @task
-    def load(rows):
-        write_delta("bronze.events", rows)
-
-    load(extract())
-
-
-ingest_events()`,
+def standardise_events(df):
+    """Clean and standardise raw events on Databricks before load."""
+    return (
+        df.dropDuplicates(["event_id"])
+        .withColumn("ingested_at", F.current_timestamp())
+        .filter(F.col("event_id").isNotNull())
+    )`,
   },
   {
-    label: "transform.sql",
+    label: "dq_test.sql",
     language: "sql",
-    // TODO: replace with a real transformation query.
-    code: `MERGE INTO silver.events AS t
-USING staging.events AS s
-ON t.event_id = s.event_id
-WHEN MATCHED THEN UPDATE SET *
-WHEN NOT MATCHED THEN INSERT *;`,
+    code: `-- Data-quality control: no nulls or duplicate keys reach the silver layer
+SELECT event_id, COUNT(*) AS occurrences
+FROM silver.events
+GROUP BY event_id
+HAVING COUNT(*) > 1 OR event_id IS NULL;`,
   },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    title: "Lakehouse migration",
+    title: "Clinical-trial data engineering at Metronomia",
     problem:
-      "Nightly batch jobs ran for hours and frequently missed SLAs, blocking morning reporting.",
+      "Complex clinical-trial data needed reliable, auditable ETL under GxP, ICH-GCP, 21 CFR Part 11, and CDISC/SDTM, with full traceability for regulators.",
     approach:
-      "Re-architected to incremental Delta loads with partition pruning and Airflow-managed backfills.",
+      "Engineered end-to-end ETL pipelines and data models in SQL and Python, built data-quality monitoring frameworks, authored Data Validation Plans and SOPs, and conducted independent code reviews as a second-line control.",
     result:
-      "TODO: quantify outcome (e.g. pipeline runtime down from X to Y, SLA hit rate to Z%).",
+      "Improved processing speed and reliability by ~30% and cut project turnaround by ~20% through standardised, dashboard-tracked data-quality processes.",
   },
   {
-    title: "Cross-cloud ingestion",
+    title: "Enterprise IoT BI at Nexxiot AG",
     problem:
-      "Sources were split across GCP and Azure with no unified, monitored ingestion path.",
+      "An enterprise IoT / logistics business needed a trustworthy pipeline running all the way from SQL extraction to governed reporting.",
     approach:
-      "Standardized connectors and quality checks into a single orchestrated framework with alerting.",
+      "Developed ETL pipelines to ingest, clean, and standardise data from APIs, databases, and enterprise systems; designed efficient data models; and authored advanced SQL and DAX to turn requirements into validated KPIs while defining data-governance standards and quality controls.",
     result:
-      "TODO: quantify outcome (e.g. N sources onboarded, data incidents down N×).",
+      "A governed reporting layer with validated KPIs and a single, controlled source of truth for the business.",
   },
 ];

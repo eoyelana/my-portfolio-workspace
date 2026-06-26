@@ -5,80 +5,80 @@ import type {
   ProjectHeader,
 } from "@/lib/projects/types";
 
-// TODO: replace placeholder llm-evaluation copy with real project content before launch.
 export const header: ProjectHeader = {
   eyebrow: "LLM Evaluation",
-  title: "Knowing when a model is actually better",
+  title: "Validating LLMs to a model-risk standard",
   intro:
-    "Evaluation harnesses that measure quality, safety, and regressions across model and prompt versions — so shipping a change is a decision backed by evidence, not vibes.",
+    "I evaluate and validate large-language-model outputs for truthfulness, robustness, bias, and strict instruction-following — treating model-output review with the same rigour as model-risk validation, aligned to FINMA Guidance 08/2024 and the EU AI Act.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
-    title: "Define the task and metrics",
+    title: "Define rule-based evaluation guidelines",
     description:
-      "Pin down what 'good' means per use case — accuracy, faithfulness, safety, latency — before choosing scorers.",
+      "Turn quality expectations — truthfulness, robustness, bias, conciseness, and strict instruction-following — into explicit, rule-based guidelines mapped to FINMA 08/2024 and EU AI Act model-risk and explainability expectations.",
   },
   {
-    title: "Curate evaluation sets",
+    title: "Score outputs and calibrate judgments",
     description:
-      "Assemble representative and adversarial examples, including edge cases that production traffic actually hits.",
+      "Evaluate model outputs against the rubric and calibrate scoring to improve human–AI alignment, explainability of judgments, and reproducibility of reviews across evaluators.",
   },
   {
-    title: "Score with judges and checks",
+    title: "Document for audit-readiness",
     description:
-      "Combine deterministic checks with LLM-as-judge scoring, calibrated against human labels to keep it honest.",
+      "Author evaluation documentation and refine evaluation frameworks so findings are traceable and defensible — a second-line, three-lines-of-defence validation mindset carried over from regulated GxP / ICH-GCP / 21 CFR Part 11 work.",
   },
   {
-    title: "Gate and track regressions",
+    title: "Monitor and govern over time",
     description:
-      "Wire evals into CI so model and prompt changes are compared head-to-head and regressions block the release.",
+      "Track regressions across model and prompt versions and translate governance rules into automated, validated checks so changes are evidenced rather than assumed.",
   },
 ];
 
 export const snippets: CodeSnippet[] = [
   {
-    label: "eval_suite.py",
+    label: "rubric_eval.py",
     language: "python",
-    // TODO: replace with a real evaluation harness example.
-    code: `def evaluate(model, dataset, scorer):
-    """Score a model over a dataset and return aggregate metrics."""
-    results = []
-    for example in dataset:
-        output = model.generate(example.prompt)
-        results.append(scorer(example, output))
-    return {
-        "score": sum(r.score for r in results) / len(results),
-        "pass_rate": sum(r.passed for r in results) / len(results),
-    }`,
+    code: `RUBRIC = ["truthfulness", "robustness", "bias", "instruction_following"]
+
+
+def evaluate(model, dataset, judge):
+    """Score model outputs against the rule-based rubric for audit-ready review."""
+    rows = []
+    for ex in dataset:
+        output = model.generate(ex.prompt)
+        scores = {dim: judge(ex, output, dim) for dim in RUBRIC}
+        rows.append({"id": ex.id, **scores})
+    return rows`,
   },
   {
     label: "judge_prompt.txt",
     language: "text",
-    // TODO: replace with a real LLM-as-judge rubric.
-    code: `You are grading an assistant answer against a reference.
-Score 1-5 for faithfulness to the source and 1-5 for helpfulness.
-Penalize unsupported claims. Return JSON: {"faithfulness": N, "helpfulness": N}.`,
+    code: `You are validating an assistant answer against rule-based guidelines.
+Rate 1-5 for truthfulness and instruction-following; flag any bias.
+Penalise unsupported claims and reward conciseness.
+Justify each score in one sentence for explainability and reproducibility.
+Return JSON: {"truthfulness": N, "instruction_following": N, "bias_flag": bool, "rationale": "..."}.`,
   },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    title: "RAG faithfulness gate",
+    title: "LLM output validation at Outlier",
     problem:
-      "Prompt changes shipped on intuition and occasionally regressed answer faithfulness in production.",
+      "Large-language-model outputs needed rigorous, repeatable validation for truthfulness, robustness, bias, and strict instruction-following — directly analogous to model-risk review.",
     approach:
-      "Built a faithfulness eval set with LLM-judge scoring calibrated to human labels, wired into CI as a gate.",
+      "Evaluated outputs against rule-based guidelines, authored evaluation documentation, and refined the evaluation frameworks; built scalable multilingual (German / English) NLP data-ingestion and ETL workflows in Databricks and Azure to feed the reviews.",
     result:
-      "TODO: quantify outcome (e.g. caught N regressions pre-release, faithfulness up to X%).",
+      "Improved human–AI alignment, explainability of judgments, and reproducibility of reviews across the evaluation programme (Jan–Sep 2025).",
   },
   {
-    title: "Model upgrade decision",
+    title: "Regulated validation → AI governance",
     problem:
-      "A proposed model swap looked better anecdotally but had no head-to-head evidence.",
+      "Financial-services AI demands independent, auditable validation — the same discipline FINMA 08/2024 and the EU AI Act now require, long established under GxP, ICH-GCP, and 21 CFR Part 11.",
     approach:
-      "Ran both models over the same eval suite across quality, safety, and latency dimensions.",
+      "Translated complex regulatory and data-governance rules into automated, validated checks; authored Data Validation Plans and SOPs and conducted independent code reviews as a second-line control.",
     result:
-      "TODO: quantify outcome (e.g. chose model on +X% quality at comparable latency/cost).",
+      "A traceable, audit-ready validation framework that maps cleanly onto model-risk, explainability, and documentation expectations for LLMs.",
   },
 ];
