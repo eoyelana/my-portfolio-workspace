@@ -1,4 +1,4 @@
-import type { ProjectHeader } from "@/lib/projects/geo";
+import type { ProjectHeader } from "@/lib/projects/types";
 
 export default function PageHeader({ eyebrow, title, intro }: ProjectHeader) {
   return (

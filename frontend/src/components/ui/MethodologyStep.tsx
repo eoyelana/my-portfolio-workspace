@@ -1,4 +1,4 @@
-import type { MethodologyStep as MethodologyStepData } from "@/lib/projects/geo";
+import type { MethodologyStep as MethodologyStepData } from "@/lib/projects/types";
 
 type MethodologyStepProps = MethodologyStepData & {
   index: number;

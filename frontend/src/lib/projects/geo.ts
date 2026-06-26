@@ -1,26 +1,9 @@
-export type MethodologyStep = {
-  title: string;
-  description: string;
-};
-
-export type CodeSnippet = {
-  label: string;
-  language: string;
-  code: string;
-};
-
-export type CaseStudy = {
-  title: string;
-  problem: string;
-  approach: string;
-  result: string;
-};
-
-export type ProjectHeader = {
-  eyebrow: string;
-  title: string;
-  intro: string;
-};
+import type {
+  CaseStudy,
+  CodeSnippet,
+  MethodologyStep,
+  ProjectHeader,
+} from "@/lib/projects/types";
 
 // TODO: replace placeholder GEO copy with real project content before launch.
 export const header: ProjectHeader = {
