@@ -9,6 +9,7 @@ const links: SocialLink[] = [
   { label: "GitHub", href: socials.github },
   { label: "LinkedIn", href: socials.linkedin },
   { label: "Email", href: socials.email },
+  { label: "Resume", href: socials.resume },
 ];
 
 export default function SocialLinks() {
