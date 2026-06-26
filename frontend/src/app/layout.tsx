@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Emmanuel Oyelana - Data & AI Engineer · Trustworthy AI & Governance",
   description:
-    "Emmanuel Oyelana builds GenAI systems and data platforms - Generative Engine Optimization, data pipelines, and LLM evaluation."
+    "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance - building GenAI in banking, governed data pipelines, and LLM evaluation."
 };
 
 export default function RootLayout({
