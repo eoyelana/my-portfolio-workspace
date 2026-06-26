@@ -1,4 +1,4 @@
-import type { CaseStudy } from "@/lib/projects/geo";
+import type { CaseStudy } from "@/lib/projects/types";
 
 type Row = {
   label: string;

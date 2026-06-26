@@ -1,4 +1,4 @@
-import type { CodeSnippet } from "@/lib/projects/geo";
+import type { CodeSnippet } from "@/lib/projects/types";
 
 export default function CodeBlock({ label, language, code }: CodeSnippet) {
   return (
