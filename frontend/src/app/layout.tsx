@@ -4,22 +4,22 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
-  title: "Emmanuel Oyelana — Data & LLMOps Engineer",
+  title: "Emmanuel Oyelana - Data & LLMOps Engineer",
   description:
-    "Emmanuel Oyelana builds GenAI systems and data platforms — Generative Engine Optimization, data pipelines, and LLM evaluation.",
+    "Emmanuel Oyelana builds GenAI systems and data platforms - Generative Engine Optimization, data pipelines, and LLM evaluation."
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
