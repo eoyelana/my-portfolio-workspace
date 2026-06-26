@@ -9,9 +9,9 @@ import {
   methodology,
   snippets,
   caseStudies,
-} from "@/lib/projects/llm-evaluation";
+} from "@/lib/projects/genai-in-banking";
 
-export default function LlmEvaluationPage() {
+export default function GenAiInBankingPage() {
   return (
     <main className="mx-auto w-full max-w-4xl space-y-16 px-6 py-16">
       <BackLink href="/" label="Back to home" />
