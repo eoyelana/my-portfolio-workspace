@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Emmanuel Oyelana - Data & LLMOps Engineer",
+  title: "Emmanuel Oyelana - Data & AI Engineer · Trustworthy AI & Governance",
   description:
     "Emmanuel Oyelana builds GenAI systems and data platforms - Generative Engine Optimization, data pipelines, and LLM evaluation."
 };
