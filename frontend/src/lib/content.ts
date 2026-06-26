@@ -10,10 +10,10 @@ export type Domain = {
 };
 
 export type Socials = {
-  // TODO: replace placeholder URLs with real profiles before launch.
   github: string;
   linkedin: string;
   email: string;
+  resume: string;
 };
 
 export const skills: Skill[] = [
@@ -37,10 +37,10 @@ export const skills: Skill[] = [
 
 export const domains: Domain[] = [
   {
-    title: "Generative Engine Optimization",
+    title: "GenAI in Banking",
     description:
-      "Making content discoverable and citable by AI search and answer engines.",
-    href: "/projects/generative-engine-optimization"
+      "LLM and NLP solutions for client documentation, KYC, and fraud detection in regulated finance.",
+    href: "/projects/genai-in-banking"
   },
   {
     title: "Data Pipelines",
@@ -59,5 +59,6 @@ export const domains: Domain[] = [
 export const socials: Socials = {
   github: "https://github.com/eoyelana",
   linkedin: "https://www.linkedin.com/in/emmanueloyelana",
-  email: "mailto:oyelanaemmanuel@rocketmail.com"
+  email: "mailto:oyelanaemmanuel@rocketmail.com",
+  resume: "/Emmanuel_Oyelana_CV.pdf"
 };

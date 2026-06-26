@@ -4,9 +4,14 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import MethodologyStep from "@/components/ui/MethodologyStep";
 import CodeBlock from "@/components/ui/CodeBlock";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
-import { header, methodology, snippets, caseStudies } from "@/lib/projects/geo";
+import {
+  header,
+  methodology,
+  snippets,
+  caseStudies,
+} from "@/lib/projects/genai-in-banking";
 
-export default function GenerativeEngineOptimizationPage() {
+export default function GenAiInBankingPage() {
   return (
     <main className="mx-auto w-full max-w-4xl space-y-16 px-6 py-16">
       <BackLink href="/" label="Back to home" />

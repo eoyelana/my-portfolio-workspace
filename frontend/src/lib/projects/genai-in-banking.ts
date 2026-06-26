@@ -6,7 +6,7 @@ import type {
 } from "@/lib/projects/types";
 
 export const header: ProjectHeader = {
-  eyebrow: "Generative Engine Optimization",
+  eyebrow: "GenAI in Banking",
   title: "Applying generative AI to Swiss banking",
   intro:
     "I build and evaluate generative-AI systems for regulated financial services — using NLP and LLMs to improve client-documentation quality, KYC, identity matching, and fraud detection, with risk management and compliance built in from the start.",
