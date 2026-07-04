@@ -17,6 +17,21 @@ const personJsonLd = {
   jobTitle: "Data & AI Engineer",
   url: "https://www.eoyelana.com",
   sameAs: [socials.github, socials.linkedin],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Zürich",
+    addressCountry: "CH",
+  },
+  knowsAbout: [
+    "Generative AI",
+    "LLM evaluation",
+    "AI governance",
+    "Data engineering",
+    "Databricks",
+    "Apache Airflow",
+    "Python",
+    "SQL",
+  ],
 };
 
 export default function Home() {
