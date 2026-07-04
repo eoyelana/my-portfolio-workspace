@@ -12,7 +12,7 @@ export default function BackLink({
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-50"
+      className="group -my-2 inline-flex items-center gap-2 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-50"
     >
       <span
         aria-hidden="true"

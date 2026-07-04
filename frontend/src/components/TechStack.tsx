@@ -6,7 +6,7 @@ export default function TechStack() {
   return (
     <section className="flex flex-col gap-8">
       <SectionHeading eyebrow="Tech Stack" title="Tools I build with" />
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {skills.map((skill) => (
           <SkillCard key={skill.name} {...skill} />
         ))}
