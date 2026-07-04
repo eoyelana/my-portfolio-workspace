@@ -14,10 +14,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_DESCRIPTION =
+  "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance. He builds GenAI for banking, governed data pipelines, and LLM evaluation.";
+
 export const metadata: Metadata = {
-  title: "Emmanuel Oyelana - Data & AI Engineer · Trustworthy AI & Governance",
-  description:
-    "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance. He builds GenAI for banking, governed data pipelines, and rigorous LLM evaluation.",
+  metadataBase: new URL("https://www.eoyelana.com"),
+  title: {
+    default: "Emmanuel Oyelana · Data & AI Engineer",
+    template: "%s · Emmanuel Oyelana",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Emmanuel Oyelana",
+    title: "Emmanuel Oyelana · Data & AI Engineer",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

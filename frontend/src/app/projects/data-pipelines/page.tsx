@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BackLink from "@/components/ui/BackLink";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,6 +11,24 @@ import {
   snippets,
   caseStudies,
 } from "@/lib/projects/data-pipelines";
+
+const DESCRIPTION =
+  "Governed ETL and ELT for clinical research and enterprise IoT, built with SQL, Python, Spark, Airflow, and Databricks, with data-quality controls and lineage.";
+
+export const metadata: Metadata = {
+  title: "Data Pipelines",
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/projects/data-pipelines",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Emmanuel Oyelana",
+    title: "Data Pipelines",
+    description: DESCRIPTION,
+    url: "/projects/data-pipelines",
+  },
+};
 
 export default function DataPipelinesPage() {
   return (

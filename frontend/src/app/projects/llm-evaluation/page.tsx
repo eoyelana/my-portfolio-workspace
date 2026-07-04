@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BackLink from "@/components/ui/BackLink";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,6 +11,24 @@ import {
   snippets,
   caseStudies,
 } from "@/lib/projects/llm-evaluation";
+
+const DESCRIPTION =
+  "Validating LLM outputs for truthfulness, robustness, bias, and instruction-following to a model risk standard aligned with FINMA 08/2024 and the EU AI Act.";
+
+export const metadata: Metadata = {
+  title: "LLM Evaluation",
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/projects/llm-evaluation",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Emmanuel Oyelana",
+    title: "LLM Evaluation",
+    description: DESCRIPTION,
+    url: "/projects/llm-evaluation",
+  },
+};
 
 export default function LlmEvaluationPage() {
   return (
