@@ -1,5 +1,6 @@
 # Editor / IDE workspace files
 *.code-workspace
 
-# Personal notes and documents at the repo root
+# Personal notes, documents, and screenshots at the repo root
 /*.pdf
+/*.png
