@@ -8,7 +8,7 @@ export default function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute -left-20 -top-24 -z-10 h-72 w-72 rounded-full bg-gradient-to-br from-accent-from to-accent-to opacity-20 blur-3xl"
       />
-      <p className="text-sm font-medium uppercase tracking-widest text-accent-from">
+      <p className="text-sm font-medium uppercase tracking-widest text-accent-text">
         Data &amp; AI Engineer · Trustworthy AI &amp; Governance
       </p>
       <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl">

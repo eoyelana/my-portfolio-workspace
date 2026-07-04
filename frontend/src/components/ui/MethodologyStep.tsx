@@ -11,7 +11,7 @@ export default function MethodologyStep({
 }: MethodologyStepProps) {
   return (
     <li className="flex gap-4">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-from to-accent-to text-sm font-semibold text-white">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 to-purple-700 text-sm font-semibold text-white">
         {index + 1}
       </span>
       <div className="flex flex-col gap-1">

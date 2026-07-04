@@ -11,7 +11,7 @@ export default function DomainCard({ title, description, href }: Domain) {
         <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-zinc-400">{description}</p>
       </div>
-      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent-from transition-transform group-hover:translate-x-1">
+      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent-text transition-transform group-hover:translate-x-1">
         Explore
         <span aria-hidden="true">→</span>
       </span>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { socials } from "@/lib/content";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,6 +53,35 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         {children}
+        <footer className="mt-auto border-t border-white/10">
+          <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-zinc-400">
+            <p>© 2026 Emmanuel Oyelana</p>
+            <nav aria-label="Contact links" className="flex gap-5">
+              <a
+                href={socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-zinc-50"
+              >
+                GitHub
+              </a>
+              <a
+                href={socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-zinc-50"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={socials.email}
+                className="transition-colors hover:text-zinc-50"
+              >
+                Email
+              </a>
+            </nav>
+          </div>
+        </footer>
         <Analytics />
         <SpeedInsights />
       </body>
