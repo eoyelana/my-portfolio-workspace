@@ -6,22 +6,22 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Emmanuel Oyelana - Data & AI Engineer · Trustworthy AI & Governance",
   description:
-    "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance - building GenAI in banking, governed data pipelines, and LLM evaluation."
+    "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance. He builds GenAI for banking, governed data pipelines, and rigorous LLM evaluation.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {

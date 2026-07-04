@@ -2,37 +2,37 @@ import type {
   CaseStudy,
   CodeSnippet,
   MethodologyStep,
-  ProjectHeader
+  ProjectHeader,
 } from "@/lib/projects/types";
 
 export const header: ProjectHeader = {
   eyebrow: "LLM Evaluation",
-  title: "Validating LLMs to a model-risk standard",
+  title: "Validating LLMs to a model risk standard",
   intro:
-    "I evaluate and validate large-language-model outputs for truthfulness, robustness, bias, and strict instruction-following - treating model-output review with the same rigour as model-risk validation, aligned to FINMA Guidance 08/2024 and the EU AI Act."
+    "I evaluate and validate LLM outputs for truthfulness, robustness, bias, and strict instruction-following. Model output review gets the same rigour as model risk validation, aligned to FINMA Guidance 08/2024 and the EU AI Act.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
     title: "Define rule-based evaluation guidelines",
     description:
-      "Turn quality expectations - truthfulness, robustness, bias, conciseness, and strict instruction-following - into explicit, rule-based guidelines mapped to FINMA 08/2024 and EU AI Act model-risk and explainability expectations."
+      "Turn quality expectations for truthfulness, robustness, bias, conciseness, and strict instruction-following into explicit rule-based guidelines, mapped to FINMA 08/2024 and EU AI Act expectations on model risk and explainability.",
   },
   {
     title: "Score outputs and calibrate judgments",
     description:
-      "Evaluate model outputs against the rubric and calibrate scoring to improve human–AI alignment, explainability of judgments, and reproducibility of reviews across evaluators."
+      "Evaluate model outputs against the rubric and calibrate scoring to improve human-AI alignment, explainability of judgments, and reproducibility of reviews across evaluators.",
   },
   {
     title: "Document for audit-readiness",
     description:
-      "Author evaluation documentation and refine evaluation frameworks so findings are traceable and defensible - a second-line, three-lines-of-defence validation mindset carried over from regulated GxP / ICH-GCP / 21 CFR Part 11 work."
+      "Author evaluation documentation and refine evaluation frameworks so findings stay traceable and defensible. This second-line validation mindset carries over from regulated GxP, ICH-GCP, and 21 CFR Part 11 work.",
   },
   {
     title: "Monitor and govern over time",
     description:
-      "Track regressions across model and prompt versions and translate governance rules into automated, validated checks so changes are evidenced rather than assumed."
-  }
+      "Track regressions across model and prompt versions and translate governance rules into automated, validated checks so changes are evidenced rather than assumed.",
+  },
 ];
 
 export const snippets: CodeSnippet[] = [
@@ -49,7 +49,7 @@ def evaluate(model, dataset, judge):
         output = model.generate(ex.prompt)
         scores = {dim: judge(ex, output, dim) for dim in RUBRIC}
         rows.append({"id": ex.id, **scores})
-    return rows`
+    return rows`,
   },
   {
     label: "judge_prompt.txt",
@@ -58,27 +58,27 @@ def evaluate(model, dataset, judge):
 Rate 1-5 for truthfulness and instruction-following; flag any bias.
 Penalise unsupported claims and reward conciseness.
 Justify each score in one sentence for explainability and reproducibility.
-Return JSON: {"truthfulness": N, "instruction_following": N, "bias_flag": bool, "rationale": "..."}.`
-  }
+Return JSON: {"truthfulness": N, "instruction_following": N, "bias_flag": bool, "rationale": "..."}.`,
+  },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
     title: "LLM output validation at Outlier",
     problem:
-      "Large-language-model outputs needed rigorous, repeatable validation for truthfulness, robustness, bias, and strict instruction-following - directly analogous to model-risk review.",
+      "LLM outputs needed rigorous, repeatable validation across all four quality dimensions, a discipline directly analogous to model risk review.",
     approach:
-      "Evaluated outputs against rule-based guidelines, authored evaluation documentation, and refined the evaluation frameworks; built scalable multilingual (German / English) NLP data-ingestion and ETL workflows in Databricks and Azure to feed the reviews.",
+      "Evaluated outputs against rule-based guidelines, authored evaluation documentation, and refined the evaluation frameworks. Built scalable multilingual NLP ingestion and ETL workflows in Databricks and Azure, in German and English, to feed the reviews.",
     result:
-      "Improved human–AI alignment, explainability of judgments, and reproducibility of reviews across the evaluation programme (Jan–Sep 2025)."
+      "Improved human-AI alignment, explainability of judgments, and reproducibility of reviews across the evaluation programme from January to September 2025.",
   },
   {
-    title: "Regulated validation → AI governance",
+    title: "From regulated validation to AI governance",
     problem:
-      "Financial-services AI demands independent, auditable validation - the same discipline FINMA 08/2024 and the EU AI Act now require, long established under GxP, ICH-GCP, and 21 CFR Part 11.",
+      "AI in financial services demands independent, auditable validation. FINMA 08/2024 and the EU AI Act now require the discipline that GxP, ICH-GCP, and 21 CFR Part 11 established long ago.",
     approach:
-      "Translated complex regulatory and data-governance rules into automated, validated checks; authored Data Validation Plans and SOPs and conducted independent code reviews as a second-line control.",
+      "Translated complex regulatory and data-governance rules into automated, validated checks, backed by Data Validation Plans, SOPs, and independent second-line code reviews.",
     result:
-      "A traceable, audit-ready validation framework that maps cleanly onto model-risk, explainability, and documentation expectations for LLMs."
-  }
+      "A traceable, audit-ready validation framework that maps cleanly onto model risk, explainability, and documentation expectations for LLMs.",
+  },
 ];

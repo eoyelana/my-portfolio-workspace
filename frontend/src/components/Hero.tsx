@@ -12,7 +12,7 @@ export default function Hero() {
         Data &amp; AI Engineer · Trustworthy AI &amp; Governance
       </p>
       <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl">
-        Emmanuel Oyelana - building{" "}
+        Emmanuel Oyelana builds{" "}
         <span className="bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
           GenAI systems
         </span>{" "}
@@ -20,7 +20,7 @@ export default function Hero() {
       </h1>
       <p className="max-w-2xl text-lg leading-8 text-zinc-400">
         I design and ship generative AI applications and the production data
-        platforms that power them - from pipelines and orchestration to rigorous
+        platforms that power them, from pipelines and orchestration to rigorous
         LLM evaluation.
       </p>
       <SocialLinks />
