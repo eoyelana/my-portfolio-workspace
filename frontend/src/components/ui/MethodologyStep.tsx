@@ -15,8 +15,12 @@ export default function MethodologyStep({
         {index + 1}
       </span>
       <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
-        <p className="text-sm leading-6 text-zinc-400">{description}</p>
+        <h3 className="text-balance text-lg font-semibold text-zinc-50">
+          {title}
+        </h3>
+        <p className="max-w-prose text-pretty text-base leading-7 text-zinc-400">
+          {description}
+        </p>
       </div>
     </li>
   );

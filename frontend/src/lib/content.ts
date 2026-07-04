@@ -23,7 +23,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Databricks",
-    blurb: "Lakehouse ETL, Delta tables, and large-scale transformations.",
+    blurb: "Lakehouse ETL, Delta tables, and transformations at scale.",
   },
   {
     name: "Next.js",
@@ -31,7 +31,7 @@ export const skills: Skill[] = [
   },
   {
     name: "GCP / Azure",
-    blurb: "Cloud-native deployment, storage, and orchestration.",
+    blurb: "Cloud-native deployment, orchestration, and storage.",
   },
 ];
 
