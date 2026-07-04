@@ -48,7 +48,7 @@ export default function GenAiInBankingPage() {
 
       <section className="flex flex-col gap-8">
         <SectionHeading eyebrow="In Practice" title="Code Snippets" />
-        <div className="flex flex-col gap-6">
+        <div className="grid gap-6 md:grid-cols-2 md:items-start">
           {snippets.map((snippet) => (
             <CodeBlock key={snippet.label} {...snippet} />
           ))}
