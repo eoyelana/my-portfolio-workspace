@@ -54,14 +54,10 @@ export const snippets: CodeSnippet[] = [
   {
     label: "quality_rubric.txt",
     language: "text",
-    code: `Assess this client contact note
-for a Swiss private bank.
-Check completeness, factual support,
-and regulatory compliance.
-Flag missing KYC details, unsupported
-claims, and risk indicators.
-Return JSON with completeness (1-5),
-flags, and suggested edits.`,
+    code: `Assess this client contact note for a Swiss private bank.
+Check completeness, factual support, and regulatory compliance.
+Flag missing KYC details, unsupported claims, and risk indicators.
+Return JSON with completeness (1-5), flags, and suggested edits.`,
   },
 ];
 
