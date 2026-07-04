@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BackLink from "@/components/ui/BackLink";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,6 +11,24 @@ import {
   snippets,
   caseStudies,
 } from "@/lib/projects/genai-in-banking";
+
+const DESCRIPTION =
+  "LLM and NLP systems for regulated Swiss banking: client documentation quality, KYC, identity matching, and fraud detection, with compliance built in.";
+
+export const metadata: Metadata = {
+  title: "GenAI in Banking",
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/projects/genai-in-banking",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Emmanuel Oyelana",
+    title: "GenAI in Banking",
+    description: DESCRIPTION,
+    url: "/projects/genai-in-banking",
+  },
+};
 
 export default function GenAiInBankingPage() {
   return (
@@ -29,7 +48,7 @@ export default function GenAiInBankingPage() {
 
       <section className="flex flex-col gap-8">
         <SectionHeading eyebrow="In Practice" title="Code Snippets" />
-        <div className="flex flex-col gap-6">
+        <div className="grid gap-6 md:grid-cols-2 md:items-start">
           {snippets.map((snippet) => (
             <CodeBlock key={snippet.label} {...snippet} />
           ))}
