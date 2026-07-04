@@ -23,7 +23,7 @@ export default function CaseStudyCard({
       <dl className="flex flex-col gap-3">
         {rows.map((row) => (
           <div key={row.label} className="flex flex-col gap-1">
-            <dt className="text-xs font-medium uppercase tracking-wider text-accent-from">
+            <dt className="text-xs font-medium uppercase tracking-wider text-accent-text">
               {row.label}
             </dt>
             <dd className="text-sm leading-6 text-zinc-400">{row.value}</dd>

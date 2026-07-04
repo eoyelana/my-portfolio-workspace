@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col items-start justify-center gap-6 px-6 py-24">
-      <p className="text-sm font-medium uppercase tracking-widest text-accent-from">
+      <p className="text-sm font-medium uppercase tracking-widest text-accent-text">
         404
       </p>
       <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl">
