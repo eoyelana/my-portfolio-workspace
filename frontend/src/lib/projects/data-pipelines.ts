@@ -43,17 +43,21 @@ export const snippets: CodeSnippet[] = [
 
 
 def standardise_events(df):
-    """Clean and standardise raw events on Databricks before load."""
+    """Clean and standardise raw events
+    before loading to Databricks."""
+    key = F.col("event_id")
+    ts = F.current_timestamp()
     return (
         df.dropDuplicates(["event_id"])
-        .withColumn("ingested_at", F.current_timestamp())
-        .filter(F.col("event_id").isNotNull())
+        .filter(key.isNotNull())
+        .withColumn("ingested_at", ts)
     )`,
   },
   {
     label: "dq_test.sql",
     language: "sql",
-    code: `-- Data-quality control: no nulls or duplicate keys reach the silver layer
+    code: `-- Data-quality gate: no nulls or
+-- duplicate keys reach silver
 SELECT event_id, COUNT(*) AS occurrences
 FROM silver.events
 GROUP BY event_id

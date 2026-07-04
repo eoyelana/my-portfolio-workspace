@@ -39,23 +39,29 @@ export const snippets: CodeSnippet[] = [
   {
     label: "note_qa.py",
     language: "python",
-    code: `def assess_contact_note(note, llm, rubric):
-    """Quality-assure a client contact note against a compliance rubric."""
-    prompt = build_prompt(note=note, rubric=rubric)
-    review = llm.complete(prompt)  # Anthropic/Claude or OpenAI
+    code: `def assess_note(note, llm, rubric):
+    """Check a client contact note
+    against a compliance rubric."""
+    # Claude or OpenAI behind one client
+    prompt = build_prompt(note, rubric)
+    review = llm.complete(prompt)
     return {
-        "completeness": review.completeness,
-        "compliance_flags": review.flags,
-        "suggested_edits": review.edits,
+        "completeness": review.score,
+        "flags": review.flags,
+        "edits": review.edits,
     }`,
   },
   {
     label: "quality_rubric.txt",
     language: "text",
-    code: `Assess this client contact note for a Swiss private bank.
-Check completeness, factual support, and regulatory compliance.
-Flag missing KYC details, unsupported claims, and risk indicators.
-Return JSON: {"completeness": 1-5, "flags": [...], "edits": [...]}.`,
+    code: `Assess this client contact note
+for a Swiss private bank.
+Check completeness, factual support,
+and regulatory compliance.
+Flag missing KYC details, unsupported
+claims, and risk indicators.
+Return JSON with completeness (1-5),
+flags, and suggested edits.`,
   },
 ];
 
