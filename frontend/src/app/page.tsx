@@ -39,7 +39,9 @@ export default function Home() {
     <main className="mx-auto w-full max-w-5xl space-y-24 px-6 py-20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personJsonLd).replaceAll("<", "\\u003c"),
+        }}
       />
       <Hero />
       <TechStack />
