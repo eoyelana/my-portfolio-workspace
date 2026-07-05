@@ -60,7 +60,5 @@ export const socials: Socials = {
   github: "https://github.com/eoyelana",
   linkedin: "https://www.linkedin.com/in/emmanueloyelana",
   email: "mailto:oyelanaemmanuel@rocketmail.com",
-  // Interim: no CV is hosted for privacy reasons. Swap back to a local
-  // PDF path once a web-safe CV (no birthdate, address, or phone) exists.
-  resume: "https://www.linkedin.com/in/emmanueloyelana",
+  resume: "/Emmanuel_Oyelana_CV.pdf",
 };
