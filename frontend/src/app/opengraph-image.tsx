@@ -29,20 +29,20 @@ export default function OpenGraphImage() {
     >
       <div
         style={{
-          width: 120,
-          height: 10,
-          borderRadius: 5,
+          width: 140,
+          height: 12,
+          borderRadius: 6,
           background: `linear-gradient(90deg, ${ACCENT_FROM}, ${ACCENT_TO})`,
-          marginBottom: 40,
+          marginBottom: 44,
         }}
       />
-      <div style={{ fontSize: 76, fontWeight: 700, letterSpacing: -2 }}>
+      <div style={{ fontSize: 84, fontWeight: 700, letterSpacing: -2 }}>
         Emmanuel Oyelana
       </div>
-      <div style={{ marginTop: 24, fontSize: 34, color: "#a1a1aa" }}>
+      <div style={{ marginTop: 28, fontSize: 42, color: "#d4d4d8" }}>
         Data & AI Engineer · Trustworthy AI & Governance
       </div>
-      <div style={{ marginTop: 56, fontSize: 26, color: "#71717a" }}>
+      <div style={{ marginTop: 52, fontSize: 30, color: "#a1a1aa" }}>
         www.eoyelana.com
       </div>
     </div>,
