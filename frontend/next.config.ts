@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
         ],
       },
+      {
+        // Humans can download the CV, but search engines must not index
+        // the PDF itself: it would compete with the homepage for name
+        // searches.
+        source: "/Emmanuel_Oyelana_CV.pdf",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
     ];
   },
 };
