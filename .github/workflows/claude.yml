@@ -53,3 +53,22 @@ jobs:
           # or https://code.claude.com/docs/en/cli-reference for available options
           # claude_args: '--allowed-tools Bash(gh pr *)'
 
+      # claude-code-action exits 0 even when the model call fails (e.g. an
+      # expired CLAUDE_CODE_OAUTH_TOKEN), turning the check green while doing
+      # nothing. Inspect the execution log and fail the job on is_error instead.
+      - name: Fail if Claude did not complete
+        if: always()
+        env:
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+        run: |
+          if [ -z "$EXECUTION_FILE" ] || [ ! -f "$EXECUTION_FILE" ]; then
+            echo "No execution file: the action was skipped or did not run. Nothing to verify."
+            exit 0
+          fi
+          errored=$(jq -s '[.. | objects | select(has("is_error")) | .is_error] | any' "$EXECUTION_FILE" 2>/dev/null)
+          if [ "$errored" = "true" ]; then
+            echo "::error::Claude Code errored (is_error=true) — most likely an expired CLAUDE_CODE_OAUTH_TOKEN. See the step log above; set show_full_output: true for the raw error."
+            exit 1
+          fi
+          echo "Claude Code completed without error."
+

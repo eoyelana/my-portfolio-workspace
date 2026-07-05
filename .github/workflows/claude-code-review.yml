@@ -43,3 +43,22 @@ jobs:
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 
+      # claude-code-action exits 0 even when the model call fails (e.g. an
+      # expired CLAUDE_CODE_OAUTH_TOKEN), turning the check green with no review
+      # posted. Inspect the execution log and fail the job on is_error instead.
+      - name: Fail if the review did not complete
+        if: always()
+        env:
+          EXECUTION_FILE: ${{ steps.claude-review.outputs.execution_file }}
+        run: |
+          if [ -z "$EXECUTION_FILE" ] || [ ! -f "$EXECUTION_FILE" ]; then
+            echo "No execution file: the action was skipped (workflow-validation on a workflow-editing PR) or did not run. Nothing to verify."
+            exit 0
+          fi
+          errored=$(jq -s '[.. | objects | select(has("is_error")) | .is_error] | any' "$EXECUTION_FILE" 2>/dev/null)
+          if [ "$errored" = "true" ]; then
+            echo "::error::Claude Code errored (is_error=true) and posted no review — most likely an expired CLAUDE_CODE_OAUTH_TOKEN. See the step log above; set show_full_output: true for the raw error."
+            exit 1
+          fi
+          echo "Claude Code review completed without error."
+
