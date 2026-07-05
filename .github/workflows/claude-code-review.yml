@@ -12,9 +12,10 @@ on:
 
 jobs:
   claude-review:
-    # Only review PRs that originate from this repository. Fork PRs receive no
-    # secrets and would only produce failing noise runs.
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # Only review PRs that originate from this repository (fork PRs receive no
+    # secrets), and skip Dependabot PRs — Dependabot-triggered runs cannot read
+    # the CLAUDE_CODE_OAUTH_TOKEN secret, so the review can't authenticate.
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     # Supersede an in-flight review when a newer commit is pushed to the PR.
     concurrency:
       group: claude-review-${{ github.event.pull_request.number }}
