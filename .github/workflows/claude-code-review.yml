@@ -41,12 +41,21 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+          # Read-only gh pr subcommands so the reviewer can inspect the PR
+          # without permission denials (a review run logged 14 of them).
+          # Deliberately NOT 'gh pr *': no merge/close/comment/review writes —
+          # the job token is read-only anyway, this keeps the tool layer least-
+          # privilege too.
+          claude_args: '--allowed-tools "Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr checks:*),Bash(gh pr list:*),Bash(gh pr status:*)"'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 
       # claude-code-action exits 0 even when the model call fails (e.g. an
       # expired CLAUDE_CODE_OAUTH_TOKEN), turning the check green with no review
-      # posted. Inspect the execution log and fail the job on is_error instead.
+      # posted. Inspect the execution log and fail the job if the terminal
+      # result errored. Only type=="result" messages decide: per-tool results
+      # also carry is_error (a denied or failed tool call sets it true mid-run)
+      # and must not fail an otherwise successful run.
       - name: Fail if the review did not complete
         if: always()
         env:
@@ -56,10 +65,15 @@ jobs:
             echo "No execution file: the action was skipped (workflow-validation on a workflow-editing PR) or did not run. Nothing to verify."
             exit 0
           fi
-          errored=$(jq -s '[.. | objects | select(has("is_error")) | .is_error] | any' "$EXECUTION_FILE" 2>/dev/null)
-          if [ "$errored" = "true" ]; then
-            echo "::error::Claude Code errored (is_error=true) and posted no review — most likely an expired CLAUDE_CODE_OAUTH_TOKEN. See the step log above; set show_full_output: true for the raw error."
-            exit 1
-          fi
-          echo "Claude Code review completed without error."
+          verdict=$(jq -rs '
+            [.. | objects | select(.type? == "result")]
+            | if length == 0 then "no-result"
+              elif any(.[]; .is_error == true) then "errored"
+              else "ok" end' "$EXECUTION_FILE" 2>/dev/null)
+          case "$verdict" in
+            ok)        echo "Claude Code review completed without error." ;;
+            no-result) echo "::error::No terminal result message in the execution log — Claude Code died before finishing (auth or API failure?). Set show_full_output: true for the raw error."; exit 1 ;;
+            errored)   echo "::error::Claude Code ended with is_error=true and posted no review — check CLAUDE_CODE_OAUTH_TOKEN validity and the step log above."; exit 1 ;;
+            *)         echo "::error::Could not parse the execution log (jq failed) — refusing to pass silently."; exit 1 ;;
+          esac
 
