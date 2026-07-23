@@ -41,6 +41,12 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+          # Read-only gh pr subcommands so the reviewer can inspect the PR
+          # without permission denials (a review run logged 14 of them).
+          # Deliberately NOT 'gh pr *': no merge/close/comment/review writes —
+          # the job token is read-only anyway, this keeps the tool layer least-
+          # privilege too.
+          claude_args: '--allowed-tools "Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr checks:*),Bash(gh pr list:*),Bash(gh pr status:*)"'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 
