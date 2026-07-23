@@ -1,0 +1,44 @@
+name: Back-merge main into develop
+
+# After anything lands on main (normally a release merge), merge main back
+# into develop automatically so the histories stay converged — replaces the
+# manual chore/sync-main-into-develop PR. Right after a release, main is a
+# strict superset of develop, so this merge is always content-empty and safe
+# to push directly. A genuine conflict fails the run red for manual
+# resolution (fall back to a chore/sync-main-into-develop PR) instead of
+# guessing.
+#
+# Note: runs with the workflow file as it exists on main, so it takes effect
+# from the first release that carries it (that same release push triggers it).
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: back-merge-develop
+  cancel-in-progress: false
+
+jobs:
+  back-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Merge main into develop and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main --quiet
+          if git merge --no-edit -m "chore: back-merge main into develop" origin/main; then
+            git push origin develop
+          else
+            echo "::error::Conflict back-merging main into develop — resolve manually via a chore/sync-main-into-develop PR."
+            exit 1
+          fi
