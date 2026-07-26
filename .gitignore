@@ -4,6 +4,8 @@
 # Personal notes, documents, and screenshots at the repo root
 /*.pdf
 /*.png
+/*.jpeg
+/notes/
 
 # macOS Finder metadata
 .DS_Store
