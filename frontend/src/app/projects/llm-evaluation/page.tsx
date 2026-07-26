@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     title: "LLM Evaluation",
     description: DESCRIPTION,
     url: "/projects/llm-evaluation",
+    images: "/opengraph-image",
   },
 };
 
