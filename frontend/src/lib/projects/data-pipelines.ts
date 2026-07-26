@@ -7,31 +7,31 @@ import type {
 
 export const header: ProjectHeader = {
   eyebrow: "Data Pipelines",
-  title: "Governed data pipelines for regulated industries",
+  title: "Governed data pipelines for regulated industries and enterprise IoT",
   intro:
-    "End-to-end ETL and ELT for clinical research and enterprise IoT, built with SQL, Python, dbt, Spark, Airflow, and Databricks on Azure, GCP, and AWS. Every pipeline ships with the data-quality controls, lineage, and audit-readiness that regulated work demands.",
+    "ETL and ELT for clinical research, hospital systems, and enterprise IoT, built in SQL and Python with dbt, Spark, Airflow, and Databricks, on Azure and GCP plus some AWS. Every pipeline ships with data-quality controls, lineage, and audit evidence.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
-    title: "Model the data and its contracts",
+    title: "Model the data and define the KPIs",
     description:
-      "Design efficient data models and schemas, and translate business requirements into validated KPIs with explicit data-governance standards before any pipeline is built.",
+      "Design the data models and schemas, and agree the KPI definitions before any pipeline is built.",
   },
   {
     title: "Build validated ETL/ELT",
     description:
-      "Engineer SQL and Python pipelines with dbt, Spark, and Databricks to ingest, clean, and standardise data from APIs, databases, and enterprise systems.",
+      "Engineer SQL and Python pipelines with dbt, Spark, and Databricks that ingest, clean, and standardise source data.",
   },
   {
-    title: "Embed data-quality controls",
+    title: "Gate releases on data quality",
     description:
-      "Author Data Validation Plans and SOPs and build data-quality monitoring frameworks, embedding validation logic and controls across SQL-based workflows for audit-readiness.",
+      "Build data-quality monitoring and validation checks into the SQL workflows themselves, so failures surface before reports do.",
   },
   {
     title: "Govern, review, and report",
     description:
-      "Run independent code reviews for traceable, compliant pipelines and surface data-quality metrics in governed dashboards (SQL, Power BI, DAX).",
+      "Run independent code reviews and surface data-quality metrics in dashboards (SQL, Power BI, DAX).",
   },
 ];
 
@@ -56,8 +56,8 @@ def standardise_events(df):
   {
     label: "dq_test.sql",
     language: "sql",
-    code: `-- Data-quality gate: no nulls or
--- duplicate keys reach silver
+    code: `-- Data-quality gate: fail the run if
+-- silver holds dupes or null keys
 SELECT event_id, COUNT(*) AS occurrences
 FROM silver.events
 GROUP BY event_id
@@ -69,19 +69,28 @@ export const caseStudies: CaseStudy[] = [
   {
     title: "Clinical trial data engineering at Metronomia",
     problem:
-      "Complex clinical trial data needed reliable, auditable ETL under GxP, ICH-GCP, 21 CFR Part 11, and CDISC/SDTM, with full traceability for regulators.",
+      "Clinical trial data needed reliable, auditable ETL under GxP, ICH-GCP, 21 CFR Part 11, and CDISC/SDTM, with full traceability for regulators.",
     approach:
-      "Engineered end-to-end ETL pipelines and data models in SQL and Python, built data-quality monitoring frameworks, authored Data Validation Plans and SOPs, and conducted independent code reviews as a second-line control.",
+      "Engineered ETL pipelines and data models in SQL and Python, authored Data Validation Plans and SOPs, and ran independent code reviews as a second-line control.",
     result:
-      "Improved processing speed and reliability by ~30% and cut project turnaround by ~20% through standardised, dashboard-tracked data-quality processes.",
+      "Standardising the data-quality checks and tracking them in dashboards cut rework and shortened project turnaround.",
+  },
+  {
+    title: "Patient record migration at GZO Spital Wetzikon",
+    problem:
+      "A hospital needed patient records moved into a new Clinical Information System without breaking healthcare compliance or data integrity.",
+    approach:
+      "Automated extraction and transformation in Python and SQL, and built reconciliation logic across legacy systems, including Navision, to catch duplicates.",
+    result:
+      "Accurate, reconciled records after migration, with rule-based quality checks and audit-ready documentation.",
   },
   {
     title: "Enterprise IoT BI at Nexxiot AG",
     problem:
-      "An enterprise IoT and logistics business needed a trustworthy pipeline running all the way from SQL extraction to governed reporting.",
+      "An enterprise IoT and logistics company needed one pipeline from SQL extraction through to reporting the business could trust.",
     approach:
-      "Developed ETL pipelines to ingest, clean, and standardise data from APIs, databases, and enterprise systems; designed efficient data models; and authored advanced SQL and DAX to turn requirements into validated KPIs while defining data-governance standards and quality controls.",
+      "Ingested API and database sources into governed models, and wrote the SQL and DAX behind the reporting KPIs.",
     result:
-      "A governed reporting layer with validated KPIs and a single, controlled source of truth for the business.",
+      "A governed reporting layer in Power BI: validated KPIs and one controlled source for the numbers.",
   },
 ];
