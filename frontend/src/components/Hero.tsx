@@ -20,9 +20,9 @@ export default function Hero() {
         and the data behind them.
       </h1>
       <p className="max-w-2xl text-pretty text-lg leading-8 text-zinc-400">
-        I design and ship generative AI applications and the production data
-        platforms that power them, from pipelines and orchestration to rigorous
-        LLM evaluation.
+        Zürich-based. I build LLM systems for banking use cases and governed
+        data pipelines across industries. I evaluate LLM outputs with rubrics
+        mapped to FINMA Guidance 08/2024 and the EU AI Act.
       </p>
       <SocialLinks />
     </section>
