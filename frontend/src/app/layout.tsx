@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     siteName: "Emmanuel Oyelana",
     title: "Emmanuel Oyelana · Data & AI Engineer",
     description: SITE_DESCRIPTION,
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
