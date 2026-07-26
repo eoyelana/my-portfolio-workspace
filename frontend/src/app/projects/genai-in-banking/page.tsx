@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     title: "GenAI in Banking",
     description: DESCRIPTION,
     url: "/projects/genai-in-banking",
+    images: "/opengraph-image",
   },
 };
 

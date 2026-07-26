@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     title: "Data Pipelines",
     description: DESCRIPTION,
     url: "/projects/data-pipelines",
+    images: "/opengraph-image",
   },
 };
 
