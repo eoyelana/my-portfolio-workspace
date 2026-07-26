@@ -13,7 +13,7 @@ export default function Hero() {
         Trustworthy&nbsp;AI&nbsp;&amp;&nbsp;Governance
       </p>
       <h1 className="max-w-3xl text-balance text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl">
-        Emmanuel Oyelana&nbsp;&ndash; building{" "}
+        Emmanuel Oyelana builds{" "}
         <span className="bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
           GenAI systems
         </span>{" "}

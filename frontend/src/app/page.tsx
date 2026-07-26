@@ -10,13 +10,22 @@ export const metadata: Metadata = {
   },
 };
 
+// Entity disambiguation, not decoration. Another Emmanuel Oyelana works in
+// wealth operations, so every surface has to carry the same name, title, city
+// and specialism. sameAs is the loop an engine can traverse to confirm these
+// profiles are one person: the site names them, and each profile names the
+// site back. The X handle was already published on the GitHub profile and
+// missing here, which left the loop open.
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Emmanuel Oyelana",
+  alternateName: "emmanueloyelana",
   jobTitle: "Data & AI Engineer",
+  description:
+    "Data & AI Engineer in Zürich. GenAI for regulated finance, governed data pipelines on Databricks, and LLM evaluation aligned to FINMA Guidance 08/2024 and the EU AI Act.",
   url: "https://www.eoyelana.com",
-  sameAs: [socials.github, socials.linkedin],
+  sameAs: [socials.github, socials.linkedin, socials.x],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Zürich",
