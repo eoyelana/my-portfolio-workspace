@@ -13,7 +13,7 @@ import {
 } from "@/lib/projects/genai-in-banking";
 
 const DESCRIPTION =
-  "LLM and NLP systems for regulated Swiss banking: client documentation quality, KYC, identity matching, and fraud detection, with compliance built in.";
+  "LLM and NLP systems for regulated Swiss banking: client documentation quality, KYC, identity matching, and fraud detection.";
 
 export const metadata: Metadata = {
   title: "GenAI in Banking",
@@ -38,7 +38,7 @@ export default function GenAiInBankingPage() {
       <PageHeader {...header} />
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="Approach" title="Methodology" />
+        <SectionHeading eyebrow="Approach" title="How I work" />
         <ol className="flex flex-col gap-6">
           {methodology.map((step, index) => (
             <MethodologyStep key={step.title} index={index} {...step} />
@@ -47,7 +47,7 @@ export default function GenAiInBankingPage() {
       </section>
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="In Practice" title="Code Snippets" />
+        <SectionHeading eyebrow="In practice" title="Code snippets" />
         <div className="grid gap-6 md:grid-cols-2 md:items-start">
           {snippets.map((snippet) => (
             <CodeBlock key={snippet.label} {...snippet} />
@@ -56,7 +56,7 @@ export default function GenAiInBankingPage() {
       </section>
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="Results" title="Case Studies" />
+        <SectionHeading eyebrow="Evidence" title="Case studies" />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {caseStudies.map((study) => (
             <CaseStudyCard key={study.title} {...study} />
