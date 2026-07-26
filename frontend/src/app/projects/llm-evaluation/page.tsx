@@ -13,7 +13,7 @@ import {
 } from "@/lib/projects/llm-evaluation";
 
 const DESCRIPTION =
-  "Validating LLM outputs for truthfulness, robustness, bias, and instruction-following to a model risk standard aligned with FINMA 08/2024 and the EU AI Act.";
+  "LLM evaluation for truthfulness, robustness, bias, conciseness, and instruction-following, aligned with FINMA 08/2024, the EU AI Act, and NIST AI RMF.";
 
 export const metadata: Metadata = {
   title: "LLM Evaluation",
@@ -38,7 +38,7 @@ export default function LlmEvaluationPage() {
       <PageHeader {...header} />
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="Approach" title="Methodology" />
+        <SectionHeading eyebrow="Approach" title="How I work" />
         <ol className="flex flex-col gap-6">
           {methodology.map((step, index) => (
             <MethodologyStep key={step.title} index={index} {...step} />
@@ -47,7 +47,7 @@ export default function LlmEvaluationPage() {
       </section>
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="In Practice" title="Code Snippets" />
+        <SectionHeading eyebrow="In practice" title="Code snippets" />
         <div className="grid gap-6 md:grid-cols-2 md:items-start">
           {snippets.map((snippet) => (
             <CodeBlock key={snippet.label} {...snippet} />
@@ -56,7 +56,7 @@ export default function LlmEvaluationPage() {
       </section>
 
       <section className="flex flex-col gap-8">
-        <SectionHeading eyebrow="Results" title="Case Studies" />
+        <SectionHeading eyebrow="Evidence" title="Case studies" />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {caseStudies.map((study) => (
             <CaseStudyCard key={study.title} {...study} />

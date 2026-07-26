@@ -9,29 +9,29 @@ export const header: ProjectHeader = {
   eyebrow: "GenAI in Banking",
   title: "Applying generative AI to Swiss banking",
   intro:
-    "I build and evaluate generative AI systems for regulated financial services, using NLP and LLMs to improve client documentation quality, KYC, identity matching, and fraud detection. Risk management and compliance are built in from the start.",
+    "I build and evaluate generative AI systems for regulated financial services, using NLP and LLMs to improve client documentation quality, KYC, identity matching, and fraud detection. Risk and compliance checks are designed in before the first model call.",
 };
 
 export const methodology: MethodologyStep[] = [
   {
     title: "Frame the regulated banking use case",
     description:
-      "Start from a concrete compliance problem such as client documentation quality, KYC, identity matching, or fraud detection, then pin down the risk and regulatory constraints it has to satisfy.",
+      "Start from one concrete compliance problem and pin down the risk and regulatory constraints it has to satisfy.",
   },
   {
-    title: "Build the NLP and LLM solution",
+    title: "Build the NLP and LLM system",
     description:
-      "Apply text analytics and LLMs (Claude and OpenAI APIs) to assess and improve documentation, scoring every note against an explicit quality and compliance rubric.",
+      "Apply text analytics and LLMs (Claude and OpenAI APIs) to assess and improve documentation, scoring every note against a quality and compliance rubric.",
   },
   {
     title: "Embed risk and compliance controls",
     description:
-      "Bake risk management and compliance checks into the workflow so generated and assessed content stays auditable and defensible rather than merely fluent.",
+      "Wire the rubric scores and review flags into the workflow; every note carries its review trail.",
   },
   {
     title: "Validate and communicate results",
     description:
-      "Evaluate solutions to a research standard and communicate findings to stakeholders, from hackathon judges to peer-reviewed publication.",
+      "Evaluate the work to a research standard and put it in front of people who push back. So far: hackathon judges and UZH researchers.",
   },
 ];
 
@@ -55,29 +55,28 @@ export const snippets: CodeSnippet[] = [
     label: "quality_rubric.txt",
     language: "text",
     code: `Assess this client contact note for a Swiss private bank.
-Check completeness, factual support, and regulatory compliance.
-Flag missing KYC details, unsupported claims, and risk indicators.
+Check completeness across the 5 W's: who, what, when, where, why.
+Flag missing roles, undocumented client requests, and unsupported claims.
 Return JSON with completeness (1-5), flags, and suggested edits.`,
   },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    title: "RiskOn Hackathon 2025 (Julius Baer)",
+    title: "RiskON Hackathon 2025 (Julius Baer)",
     problem:
-      "Client contact notes vary in quality, creating compliance and risk exposure for the bank. The challenge asked how AI can help with quality assurance for client contact notes.",
+      "Relationship managers write client contact notes by hand; completeness and quality vary, and poor notes create compliance risk. The RiskON 2025 challenge asked how AI can improve completeness and quality.",
     approach:
-      "Built an NLP and LLM solution that applies text analytics to check the quality of client contact notes automatically, surfacing gaps and compliance risks for review.",
-    result:
-      "Team Winner of the RiskOn Hackathon 2025, sponsored by Julius Baer (Bank), Switzerland.",
+      "Built an NLP and LLM pipeline that checks note quality automatically and flags gaps and compliance risks for human review.",
+    result: "Team winner.",
   },
   {
-    title: "AI-driven risk management in Swiss banking",
+    title: "White paper with the UZH Department of Finance",
     problem:
-      "Swiss banks need stronger, AI-enabled approaches to client documentation, identity matching, and fraud detection across the KYC lifecycle.",
+      "RiskON 2025 continued past the hackathon: a research collaboration between Swiss banks and universities on AI for client documentation, identity matching, and fraud detection.",
     approach:
-      "Researched and designed AI-enabled solutions across the KYC lifecycle, grounding them in real risk management and compliance requirements.",
+      "Worked the hackathon findings into the joint research and contributed to Chapter 1 of the resulting report.",
     result:
-      "Published as 'Advancing Risk Management in Swiss Banking' with the University of Zürich, Department of Finance (2026).",
+      "Named contributor to the 42-page white paper 'Advancing Risk Management in Swiss Banking' (UZH Department of Finance, 2026).",
   },
 ];
