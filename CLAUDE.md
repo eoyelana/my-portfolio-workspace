@@ -38,3 +38,10 @@ npm run lint    # Run ESLint
 - App Router pages live under `frontend/src/app`.
 - Import alias: `@/*` maps to `frontend/src/*`.
 - Project routes are grouped under `/projects/<domain>`.
+
+## Workflow (strict)
+
+- Every change starts as a GitHub issue stating the outcome and acceptance criteria.
+- One branch per issue, cut from `develop`, named `<type>/<issue>-<slug>` (e.g. `feat/45-hero-copy`).
+- PRs target `develop` and close their issue with `Closes #<n>`. No direct commits to `develop` or `main`.
+- Release: PR `develop` → `main`, tag `vX.Y.Z` on merge; Vercel deploys `main`; CI back-merges `main` into `develop`.
