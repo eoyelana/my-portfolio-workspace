@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repository. These rules are **stri
 
 ## Project
 
-Personal portfolio for a **Data & LLMOps Engineer**. Monorepo workspace:
+Personal portfolio for a **Data & AI Engineer**. Monorepo workspace:
 
 - `frontend/` - Next.js app (TypeScript, Tailwind CSS, App Router, ESLint).
 - `backend/` - Python services (placeholder; not yet scaffolded).
