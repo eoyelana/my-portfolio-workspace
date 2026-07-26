@@ -38,3 +38,19 @@ body {
   outline: 2px solid var(--accent-text);
   outline-offset: 2px;
 }
+
+/* Every card and arrow animates transform. Honour a reduced-motion request
+   site-wide rather than per component, for the same reason as the ring
+   above: a new component cannot forget it. Kept at 0.01ms rather than 0 so
+   transitionend still fires and nothing waiting on it stalls.
+   No Lighthouse audit covers this, so it needs its own check. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
