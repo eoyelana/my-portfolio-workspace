@@ -40,18 +40,25 @@ npm run lint    # Run ESLint
 So for any change touching markup, CSS, or a Tailwind class, lint and build are the entry fee, not the receipt. Before calling it done:
 
 ```bash
-npm run build && npm run start -- --port 3111
+npm run build
+npm run start -- --port 3111 &          # background it: next start blocks forever
+until curl -sf -o /dev/null http://localhost:3111; do sleep 1; done
 npx -y lighthouse@latest http://localhost:3111 \
-  --only-categories=accessibility,performance,seo \
-  --chrome-flags="--headless=new" --output=json --output-path=./lh.json
+  --only-categories=accessibility,performance,seo,best-practices \
+  --chrome-flags="--headless=new --no-sandbox" \
+  --output=json --output-path=./lh.json
+kill %1
 ```
 
-Run it on **every** affected route, not just the home page. Quote the score and the failing audit ids. Lighthouse cannot audit `not-found` locally: a real 404 status aborts the run with `ERRORED_DOCUMENT_REQUEST`, so check that route by other means and say so.
+The `&` and the poll are load-bearing. Without them `next start` never returns, the Lighthouse line never runs, and the whole block hangs.
 
-Two rules that follow:
+Run it on **every** affected route, not just the home page. Quote the score and the failing audit ids, and quote the same categories the command actually requested. Lighthouse cannot audit `not-found` locally: a real 404 aborts the run with `ERRORED_DOCUMENT_REQUEST` and reports score 0 with zero failing audits, which is an artifact rather than a result. Check that route another way and say which way.
 
-- **Measure the composited background, not the token.** `text-zinc-500` reads 4.12:1 on `#09090b` but 3.94:1 once `bg-white/[.03]` sits under it, and 3.78:1 on hover. Lighthouse never reaches the hover state, so hover and focus styles need their own arithmetic.
-- **Every `hover:` needs a `focus-visible:`.** A keyboard user must get the same state affordance a pointer user gets. `globals.css` carries one unlayered `:focus-visible` ring so a new component cannot ship without an indicator; component classes add to it and never replace it.
+Three rules that follow:
+
+- **Measure the composited background, not the token.** `text-zinc-500` reads 4.12:1 on `#09090b` but 3.94:1 once `bg-white/[.03]` sits under it, and 3.78:1 on hover. Lighthouse never reaches the hover state, so hover and focus styles need their own arithmetic. Remember `outline-offset` paints a focus ring *outside* the border box, so the ring's backdrop is the page, not the card it surrounds.
+- **Every interactive element's `hover:` needs a `focus-visible:`.** A keyboard user must get the state affordance a pointer user gets. The qualifier matters: `SkillCard.tsx` is a non-interactive `<div>` with a decorative `hover:` and correctly has no focus counterpart.
+- **Keep the global focus ring in `@layer base`, never unlayered.** An unlayered rule outranks every layered one including `@layer utilities`, which silently makes a future `focus-visible:outline-none` inert: the class compiles and does nothing, with no lint or build error. Tailwind's preflight has no outline-removing rule to beat, so unlayering wins nothing.
 
 ## Conventions
 
