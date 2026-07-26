@@ -1,7 +1,12 @@
 import Link from "next/link";
 import type { Domain } from "@/lib/content";
 
-export default function DomainCard({ title, description, href }: Domain) {
+export default function DomainCard({
+  title,
+  description,
+  proof,
+  href,
+}: Domain) {
   return (
     <Link
       href={href}
@@ -12,6 +17,9 @@ export default function DomainCard({ title, description, href }: Domain) {
         <p className="mt-2 text-pretty text-base leading-7 text-zinc-400">
           {description}
         </p>
+        {proof && (
+          <p className="mt-3 text-sm leading-6 text-zinc-500">{proof}</p>
+        )}
       </div>
       <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent-text transition-transform group-hover:translate-x-1">
         Explore

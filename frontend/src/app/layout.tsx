@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_DESCRIPTION =
-  "Emmanuel Oyelana is a Data & AI Engineer focused on trustworthy AI and governance. He builds GenAI for banking, governed data pipelines, and LLM evaluation.";
+  "Data & AI Engineer in Zürich. GenAI for banking, governed data pipelines, and LLM evaluation aligned with FINMA Guidance 08/2024 and the EU AI Act.";
 
 export const viewport: Viewport = {
   themeColor: "#09090b",
