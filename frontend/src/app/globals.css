@@ -26,3 +26,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* One keyboard focus ring for the whole site, so a new interactive element
+   cannot ship without an indicator. Unlayered on purpose: it has to beat
+   Tailwind's preflight, which lives in @layer base.
+   #818cf8 is 6.67:1 on the page background and 6.11:1 on a hovered card,
+   both well over the 3:1 that WCAG 1.4.11 asks of a focus indicator.
+   Component-level focus-visible: classes add the hover affordance on top;
+   they never replace this. */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+}

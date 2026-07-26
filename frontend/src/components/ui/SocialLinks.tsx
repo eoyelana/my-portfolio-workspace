@@ -23,7 +23,7 @@ export default function SocialLinks() {
             href={link.href}
             target={isEmail ? undefined : "_blank"}
             rel={isEmail ? undefined : "noopener noreferrer"}
-            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-accent-from/60 hover:bg-white/[.05] hover:text-zinc-50"
+            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-accent-from/60 hover:bg-white/[.05] hover:text-zinc-50 focus-visible:border-accent-from/60 focus-visible:bg-white/[.05] focus-visible:text-zinc-50"
           >
             {link.label}
           </a>
