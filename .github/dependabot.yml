@@ -10,16 +10,35 @@ updates:
     target-branch: "develop"
     schedule:
       interval: "weekly"
-    # react/react-dom and next/eslint-config-next move in lockstep. Split across
-    # separate PRs they break npm peer resolution: react-dom@X peers on react@^X,
-    # so a react-dom-only branch fails `npm install` against the pinned older react.
+    # Inside a group, the ignore command takes a dependency name:
+    #   @dependabot ignore eslint-config-next major version
+    # The bare "@dependabot ignore this major version" only works ungrouped,
+    # which still covers eslint and typescript (see #61).
     groups:
+      # react-dom@X declares a peer on react@^X, so a react-dom-only PR fails
+      # `npm install` against the exact-pinned older react (#59). Majors stay in
+      # the group on purpose: excluding them reintroduces the break on react 20.
       react:
         patterns:
           - "react"
           - "react-dom"
           - "@types/react"
           - "@types/react-dom"
+      # Groups cover version updates only unless applies-to says otherwise, so a
+      # react-dom security patch would arrive alone and hit the same wall.
+      # Inert while security updates are disabled on the repo; here so enabling
+      # them later does not re-break the build.
+      react-security:
+        applies-to: security-updates
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      # No peer edge between these two. Grouped so their versions stay aligned
+      # and to spend one PR slot instead of two, not for resolution safety.
+      # "@next/*" matches nothing today; it is there for a future direct dep
+      # such as @next/bundle-analyzer.
       next:
         patterns:
           - "next"
