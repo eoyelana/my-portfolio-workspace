@@ -12,11 +12,11 @@ export default function BackLink({
   return (
     <Link
       href={href}
-      className="group -my-2 inline-flex items-center gap-2 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-50"
+      className="group -my-2 inline-flex items-center gap-2 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-50 focus-visible:text-zinc-50"
     >
       <span
         aria-hidden="true"
-        className="transition-transform group-hover:-translate-x-1"
+        className="transition-transform group-hover:-translate-x-1 group-focus-visible:-translate-x-1"
       >
         ←
       </span>

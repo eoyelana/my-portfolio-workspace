@@ -38,7 +38,7 @@ export default function DataPipelinesPage() {
 
       <div className="flex flex-col gap-4">
         <PageHeader {...header} />
-        <p className="text-sm leading-6 text-zinc-500">
+        <p className="text-sm leading-6 text-zinc-400">
           Certified: Databricks Data Engineer · Apache Spark Developer · dbt
           Fundamentals · Azure Data Fundamentals
         </p>

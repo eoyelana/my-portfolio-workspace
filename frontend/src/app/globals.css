@@ -26,3 +26,37 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* One keyboard focus ring for the whole site, so a new interactive element
+   cannot ship without an indicator.
+   In @layer base, not unlayered. An unlayered rule outranks every layered
+   one, utilities included, which would silently make a future
+   focus-visible:outline-none inert: the class would compile and do nothing,
+   with no lint or build error. Preflight has no outline-removing rule to
+   beat (its only outline rule is `:-moz-focusring { outline: auto }`), so
+   unlayering wins nothing and costs overridability.
+   outline-offset paints the ring outside the border box, so it always sits
+   on the page background rather than on a card. #818cf8 is 6.67:1 there,
+   well over the 3:1 WCAG 1.4.11 asks of a focus indicator. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+  }
+}
+
+/* Every card and arrow animates transform. Honour a reduced-motion request
+   site-wide rather than per component, for the same reason as the ring
+   above: a new component cannot forget it. Kept at 0.01ms rather than 0 so
+   transitionend still fires and nothing waiting on it stalls.
+   No Lighthouse audit covers this, so it needs its own check. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

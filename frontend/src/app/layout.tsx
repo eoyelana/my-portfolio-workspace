@@ -62,7 +62,7 @@ export default function RootLayout({
                 href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-zinc-50"
+                className="transition-colors hover:text-zinc-50 focus-visible:text-zinc-50"
               >
                 GitHub
               </a>
@@ -70,13 +70,13 @@ export default function RootLayout({
                 href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-zinc-50"
+                className="transition-colors hover:text-zinc-50 focus-visible:text-zinc-50"
               >
                 LinkedIn
               </a>
               <a
                 href={socials.email}
-                className="transition-colors hover:text-zinc-50"
+                className="transition-colors hover:text-zinc-50 focus-visible:text-zinc-50"
               >
                 Email
               </a>
