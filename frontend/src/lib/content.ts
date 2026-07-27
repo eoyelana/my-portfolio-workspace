@@ -8,11 +8,20 @@ export type Domain = {
   description: string;
   proof?: string;
   href: string;
+  /**
+   * ISO date this route's content last changed materially. Feeds <lastmod> in
+   * the sitemap. Google uses lastmod only "if it's consistently and verifiably
+   * accurate", so this is set by hand when the page actually changes. Do NOT
+   * wire it to build time: every deploy would claim every page changed, which
+   * teaches Google to ignore the field.
+   */
+  updated: string;
 };
 
 export type Socials = {
   github: string;
   linkedin: string;
+  x: string;
   email: string;
   resume: string;
 };
@@ -45,6 +54,7 @@ export const domains: Domain[] = [
       "LLMs and NLP for client contact notes, KYC, and fraud detection.",
     proof: "Team winner, RiskON 2025 · Contributor, UZH white paper (2026)",
     href: "/projects/genai-in-banking",
+    updated: "2026-07-26",
   },
   {
     title: "Data Pipelines",
@@ -53,6 +63,7 @@ export const domains: Domain[] = [
     proof:
       "Clinical trials at Metronomia · Patient records at GZO · IoT at Nexxiot",
     href: "/projects/data-pipelines",
+    updated: "2026-07-26",
   },
   {
     title: "LLM Evaluation",
@@ -60,12 +71,20 @@ export const domains: Domain[] = [
       "Rubric-based scoring of LLM outputs and regression tracking across model versions.",
     proof: "Nine months of production LLM reviews in German and English",
     href: "/projects/llm-evaluation",
+    updated: "2026-07-26",
   },
 ];
+
+/**
+ * Home page equivalent of Domain.updated. Same rule: set by hand when the page
+ * materially changes, never wired to build time.
+ */
+export const homeUpdated = "2026-07-26";
 
 export const socials: Socials = {
   github: "https://github.com/eoyelana",
   linkedin: "https://www.linkedin.com/in/emmanueloyelana",
+  x: "https://x.com/emmanueloyelana",
   email: "mailto:oyelanaemmanuel@rocketmail.com",
   resume: "/Emmanuel_Oyelana_CV.pdf",
 };
