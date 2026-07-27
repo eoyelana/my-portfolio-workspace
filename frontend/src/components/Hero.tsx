@@ -13,7 +13,12 @@ export default function Hero() {
         Trustworthy&nbsp;AI&nbsp;&amp;&nbsp;Governance
       </p>
       <h1 className="max-w-3xl text-balance text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl">
-        Emmanuel Oyelana builds{" "}
+        {/* Settled 25 July 2026, do not re-raise: the dash here is a
+            name-tagline separator in a headline lockup, which is typography and
+            the author's call, not the banned clause splice. See
+            the deslop dash rule. It also keeps the h1 verbatim
+            with the LinkedIn banner. */}
+        Emmanuel Oyelana&nbsp;&ndash; building{" "}
         <span className="bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
           GenAI systems
         </span>{" "}
