@@ -39,6 +39,13 @@ npm run lint    # Run ESLint
 - Import alias: `@/*` maps to `frontend/src/*`.
 - Project routes are grouped under `/projects/<domain>`.
 
+## Copy and findings (strict)
+
+- All prose follows the global `/deslop` skill. Read its dash rule before filing **or acting on** a dash finding: a name-tagline separator in a headline lockup is exempt (`the deslop dash rule`).
+- `the local copy decision record` is the decision record for site copy. Check it before filing a copy finding. A finding that contradicts a decision already recorded there gets closed with the reference, never implemented.
+- **Settled, do not re-raise:** the `<h1>` lockup dash in `Hero.tsx`, decided 25 July 2026, re-raised as issue #66 item 2 and reverted in f684658.
+- A commit that changes user-facing copy says so in its subject line. PR #67 changed the h1 under an SEO-only subject and it survived to review.
+
 ## Workflow (strict)
 
 - Every change starts as a GitHub issue stating the outcome and acceptance criteria.
