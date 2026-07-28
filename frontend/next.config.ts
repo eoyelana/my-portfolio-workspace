@@ -44,12 +44,41 @@ const securityHeaders = [
     : []),
 ];
 
+// www.eoyelana.com is the canonical host. Vercel also serves the whole site on
+// the project's production alias, which returned HTTP 200 with no X-Robots-Tag
+// and a permissive robots.txt, and Perplexity had it indexed as a result
+// separate from www. A self-referencing canonical is a hint a crawler may
+// ignore, and answer engines are the least likely to honour it, so the fix is
+// to stop serving content there at all rather than to ask nicely.
+const productionAlias = "my-portfolio-workspace.vercel.app";
+
+// Per-deployment preview hostnames carry a branch or commit hash and are NOT
+// matched by the redirect above, so PR previews keep working. They still get
+// noindex, because a preview URL that leaks into a link is the same duplicate
+// problem in a smaller form.
+const anyVercelHost = "(?<sub>.*).vercel.app";
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: productionAlias }],
+        destination: "https://www.eoyelana.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/(.*)",
+        has: [{ type: "host", value: anyVercelHost }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
         // Humans can download the CV, but search engines must not index
