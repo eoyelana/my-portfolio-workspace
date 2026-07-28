@@ -56,7 +56,7 @@ Run it on **every** affected route, not just the home page. Quote the score and 
 
 Three rules that follow:
 
-- **Measure the composited background, not the token.** `text-zinc-500` reads 4.12:1 on `#09090b` but 3.94:1 once `bg-white/[.03]` sits under it, and 3.78:1 on hover. Lighthouse never reaches the hover state, so hover and focus styles need their own arithmetic. Remember `outline-offset` paints a focus ring *outside* the border box, so the ring's backdrop is the page, not the card it surrounds.
+- **Measure the composited background, not the token.** `text-zinc-500` reads 4.12:1 on `#09090b` but 3.94:1 once `bg-white/[.03]` sits under it, and 3.78:1 on hover. Lighthouse never reaches the hover state, so hover and focus styles need their own arithmetic. Remember `outline-offset` paints a focus ring _outside_ the border box, so the ring's backdrop is the page, not the card it surrounds.
 - **Every interactive element's `hover:` needs a `focus-visible:`.** A keyboard user must get the state affordance a pointer user gets. The qualifier matters: `SkillCard.tsx` is a non-interactive `<div>` with a decorative `hover:` and correctly has no focus counterpart.
 - **Keep the global focus ring in `@layer base`, never unlayered.** An unlayered rule outranks every layered one including `@layer utilities`, which silently makes a future `focus-visible:outline-none` inert: the class compiles and does nothing, with no lint or build error. Tailwind's preflight has no outline-removing rule to beat, so unlayering wins nothing.
 
@@ -69,6 +69,7 @@ Three rules that follow:
 ## Copy and findings (strict)
 
 - All prose follows the global `/deslop` skill. Read its dash rule before filing **or acting on** a dash finding: a name-tagline separator in a headline lockup is exempt (`the deslop dash rule`).
+- The dash rule is **enforced, not remembered**: `frontend/scripts/check-dashes.mjs` runs on `prebuild`, so every `npm run build` including Vercel's fails on an en or em dash in `src/`, entity forms included. Exceptions go in its `ALLOWED` array with a reason and get argued with in review. Run it alone with `npm run check:dashes`.
 - `the local copy decision record` is the decision record for site copy. Check it before filing a copy finding. A finding that contradicts a decision already recorded there gets closed with the reference, never implemented.
 - **Settled, do not re-raise:** the `<h1>` lockup dash in `Hero.tsx`, decided 25 July 2026, re-raised as issue #66 item 2 and reverted in f684658.
 - A commit that changes user-facing copy says so in its subject line. PR #67 changed the h1 under an SEO-only subject and it survived to review.
