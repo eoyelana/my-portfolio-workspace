@@ -74,6 +74,19 @@ Three rules that follow:
 - **Settled, do not re-raise:** the `<h1>` lockup dash in `Hero.tsx`, decided 25 July 2026, re-raised as issue #66 item 2 and reverted in f684658.
 - A commit that changes user-facing copy says so in its subject line. PR #67 changed the h1 under an SEO-only subject and it survived to review.
 
+## One store per kind of state (strict)
+
+| Kind                                   | Store                             |
+| -------------------------------------- | --------------------------------- |
+| Open repo work                         | GitHub issues                     |
+| Copy decisions already made            | `notes/site-cv-review-2026-07.md` |
+| Non-repo work, infrastructure, pitches | `~/Developer/NEXT.md`             |
+
+- **Reference the store, never copy out of it.** A PR or release body says "Refs #66, does not close it" and stops there. It does not restate what stays open, because a merged body is frozen the moment it merges and the copy inside it rots while the issue moves on.
+- **Naming a limit on the evidence in the PR is the opposite thing, and stays required.** "The redirect cannot be confirmed until this deploys" belongs in the body: it is a fact about this change that lives nowhere else, and an unnamed gap reads as coverage.
+- The test: could this sentence become false without anyone editing it? If yes it belongs in its store, referenced by link.
+- Both failures happened on 28 July 2026: `NEXT.md` duplicating GitHub issues, then PR #72 itemising #66's open work in a release body.
+
 ## Workflow (strict)
 
 - Every change starts as a GitHub issue stating the outcome and acceptance criteria.
