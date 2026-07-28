@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "node scripts/check-dashes.mjs",
     "start": "next start",
     "lint": "eslint",
+    "check:dashes": "node scripts/check-dashes.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {
