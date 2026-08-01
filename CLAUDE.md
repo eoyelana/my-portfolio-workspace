@@ -71,7 +71,7 @@ Three rules that follow:
 - All prose follows the global `/deslop` skill. Read its dash rule before filing **or acting on** a dash finding: a name-tagline separator in a headline lockup is exempt under that rule.
 - The dash rule is **enforced, not remembered**: `frontend/scripts/check-dashes.mjs` runs on `prebuild`, so every `npm run build` including Vercel's fails on an en or em dash in `src/`, entity forms included. Exceptions go in its `ALLOWED` array with a reason and get argued with in review. Run it alone with `npm run check:dashes`.
 - The site copy decision record lives in the gitignored `notes/` folder. Check it before filing a copy finding. A finding that contradicts a decision already recorded there gets closed with the reference, never implemented.
-- **Settled, do not re-raise:** the `<h1>` lockup dash in `Hero.tsx`, decided 25 July 2026, re-raised as issue #66 item 2 and reverted in f684658.
+- **Settled, do not re-raise:** the `<h1>` lockup dash in `Hero.tsx`, decided 25 July 2026, re-raised as issue #66 item 2 and reverted the same week.
 - A commit that changes user-facing copy says so in its subject line. PR #67 changed the h1 under an SEO-only subject and it survived to review.
 
 ## One store per kind of state (strict)
