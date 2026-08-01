@@ -16,7 +16,7 @@ export const methodology: MethodologyStep[] = [
   {
     title: "Define rule-based evaluation guidelines",
     description:
-      "Turn the five quality dimensions into written scoring rules for whichever governance framework applies, model risk and explainability included.",
+      "Turn the five quality dimensions into written scoring rules for whichever governance framework applies, model risk management and explainability included.",
   },
   {
     title: "Score outputs and calibrate judgements",
@@ -31,7 +31,7 @@ export const methodology: MethodologyStep[] = [
   {
     title: "Monitor and govern over time",
     description:
-      "Track regressions across model and prompt versions and turn governance rules into automated, validated checks, so every change leaves evidence.",
+      "LLMOps with an audit trail: track regressions across model and prompt versions and turn governance rules into automated, validated checks, so every change leaves evidence.",
   },
 ];
 

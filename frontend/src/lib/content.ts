@@ -71,7 +71,7 @@ export const domains: Domain[] = [
       "Rubric-based scoring of LLM outputs and regression tracking across model versions.",
     proof: "Nine months of production LLM reviews in German and English",
     href: "/projects/llm-evaluation",
-    updated: "2026-07-26",
+    updated: "2026-08-01",
   },
 ];
 
