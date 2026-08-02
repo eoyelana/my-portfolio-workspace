@@ -7,5 +7,8 @@
 /*.jpeg
 /notes/
 
+# Local agent-instruction overlay
+CLAUDE.local.md
+
 # macOS Finder metadata
 .DS_Store

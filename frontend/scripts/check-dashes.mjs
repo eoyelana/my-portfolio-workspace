@@ -56,9 +56,7 @@ const ALLOWED = [
     reason:
       "Name-tagline separator in the h1 headline lockup, which is typography " +
       "and the author's call, not a clause splice. Settled 25 July 2026, " +
-      "re-raised as issue #66 item 2, reverted in f684658. See " +
-      "the deslop dash rule and " +
-      "the local copy decision record.",
+      "re-raised as issue #66 item 2, and the revert stood.",
   },
 ];
 
